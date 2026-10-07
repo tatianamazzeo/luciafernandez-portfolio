@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lucía Fernandez · Creadora de contenido & UGC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Bricolage+Grotesque:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ============ 1. PALETA Y VARIABLES (cambiá los colores acá) ============ */
+        :root {
+            --butter: #FFE9A8;
+            --matcha: #C9D9A3;
+            --berry: #E7A9C2;
+            --lilac: #D9CBF0;
+            --milk: #FFF8EE;
+            --cocoa: #4A2F2A;
+            --cocoa-soft: #7A5C55;
+            --radius: 28px;
+            --font-display: 'Caprasimo', Georgia, serif;
+            --font-body: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--cocoa);
+            background: var(--milk);
+            line-height: 1.6;
+            font-size: 1.05rem;
+            background-image: radial-gradient(var(--butter) 1.5px, transparent 1.5px);
+            background-size: 26px 26px;
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        a {
+            color: inherit
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--cocoa);
+            outline-offset: 3px;
+            border-radius: 8px
+        }
+
+        .wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 1.25rem
+        }
+
+        section {
+            padding: 4.5rem 0
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            line-height: 1.1
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: .5rem
+        }
+
+        .sub {
+            color: var(--cocoa-soft);
+            max-width: 52ch;
+            margin-bottom: 2.5rem
+        }
+
+        /* ============ 2. NAV ============ */
+        nav {
+            position: sticky;
+            top: .75rem;
+            z-index: 10;
+            margin: .75rem auto 0;
+            width: fit-content;
+            max-width: calc(100% - 1.5rem);
+            background: var(--milk);
+            border: 2px solid var(--cocoa);
+            border-radius: 999px;
+            padding: .4rem .5rem;
+            display: flex;
+            gap: .25rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 4px 4px 0 var(--cocoa);
+        }
+
+        nav a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: .92rem;
+            padding: .35rem .9rem;
+            border-radius: 999px
+        }
+
+        nav a:hover {
+            background: var(--butter)
+        }
+
+        /* ============ 3. HERO ============ */
+        .hero {
+            padding-top: 3.5rem
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 2.5rem;
+            align-items: center
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 8vw, 5.2rem);
+            margin-bottom: 1rem
+        }
+
+        .hero h1 span {
+            background: var(--berry);
+            padding: 0 .25em;
+            border-radius: .3em;
+            display: inline-block;
+            transform: rotate(-2deg)
+        }
+
+        .hero p {
+            max-width: 46ch;
+            color: var(--cocoa-soft);
+            margin-bottom: 1.75rem
+        }
+
+        .btns {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 700;
+            padding: .8rem 1.5rem;
+            border: 2px solid var(--cocoa);
+            border-radius: 999px;
+            background: var(--butter);
+            box-shadow: 4px 4px 0 var(--cocoa);
+            transition: transform .15s, box-shadow .15s;
+        }
+
+        .btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--cocoa)
+        }
+
+        .btn.alt {
+            background: var(--milk)
+        }
+
+        .hero-photo {
+            position: relative;
+            justify-self: center
+        }
+
+        .photo-frame {
+            width: min(100%, 340px);
+            aspect-ratio: 4/5;
+            background: var(--lilac);
+            border: 2px solid var(--cocoa);
+            border-radius: 200px 200px var(--radius) var(--radius);
+            box-shadow: 8px 8px 0 var(--cocoa);
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            color: var(--cocoa-soft);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .sticker {
+            position: absolute;
+            font-weight: 700;
+            font-size: .9rem;
+            padding: .45rem .9rem;
+            border: 2px solid var(--cocoa);
+            border-radius: 999px;
+            background: var(--matcha);
+            box-shadow: 3px 3px 0 var(--cocoa);
+        }
+
+        .s1 {
+            top: 8%;
+            left: -8%;
+            transform: rotate(-8deg)
+        }
+
+        .s2 {
+            bottom: 14%;
+            right: -6%;
+            transform: rotate(6deg);
+            background: var(--berry)
+        }
+
+        /* ============ 4. SOBRE MÍ ============ */
+        .about {
+            background: var(--matcha);
+            border-block: 2px solid var(--cocoa)
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem
+        }
+
+        .about p+p {
+            margin-top: 1rem
+        }
+
+        .facts {
+            list-style: none;
+            display: grid;
+            gap: .75rem
+        }
+
+        .facts li {
+            background: var(--milk);
+            border: 2px solid var(--cocoa);
+            border-radius: var(--radius);
+            padding: 1rem 1.25rem
+        }
+
+        .facts b {
+            font-family: var(--font-display);
+            font-weight: 400;
+            font-size: 1.3rem;
+            display: block
+        }
+
+        /* ============ 5. TRABAJOS ============ */
+        .filters {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem
+        }
+
+        .chip {
+            font: inherit;
+            font-weight: 500;
+            font-size: .92rem;
+            cursor: pointer;
+            padding: .4rem 1rem;
+            border: 2px solid var(--cocoa);
+            border-radius: 999px;
+            background: var(--milk);
+            color: var(--cocoa);
+        }
+
+        .chip[aria-pressed="true"] {
+            background: var(--cocoa);
+            color: var(--milk)
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem
+        }
+
+        .work {
+            background: #fff;
+            border: 2px solid var(--cocoa);
+            border-radius: var(--radius);
+            padding: .75rem .75rem 1rem;
+            box-shadow: 5px 5px 0 var(--cocoa);
+        }
+
+        .work:nth-child(odd) {
+            transform: rotate(-1.2deg)
+        }
+
+        .work:nth-child(even) {
+            transform: rotate(1.2deg)
+        }
+
+        .thumb {
+            aspect-ratio: 9/16;
+            border-radius: 20px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            font-weight: 700;
+            color: var(--cocoa);
+            margin-bottom: .75rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thumb::after {
+            content: "▶";
+            position: absolute;
+            bottom: .75rem;
+            right: .75rem;
+            width: 2.2rem;
+            height: 2.2rem;
+            display: grid;
+            place-items: center;
+            background: var(--milk);
+            border: 2px solid var(--cocoa);
+            border-radius: 50%;
+            font-size: .75rem
+        }
+
+        .thumb video,
+        .thumb img,
+        .thumb iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 0;
+        }
+
+        /* saca el ▶ decorativo cuando hay un video real */
+        .thumb:has(video)::after,
+        .thumb:has(iframe)::after {
+            display: none
+        }
+
+        .c1 {
+            background: var(--butter)
+        }
+
+        .c2 {
+            background: var(--berry)
+        }
+
+        .c3 {
+            background: var(--lilac)
+        }
+
+        .c4 {
+            background: var(--matcha)
+        }
+
+        .work h3 {
+            font-size: 1.2rem
+        }
+
+        .work small {
+            color: var(--cocoa-soft)
+        }
+
+        .work[hidden] {
+            display: none
+        }
+
+        /* ============ 6. SERVICIOS (para marcas) ============ */
+        .services {
+            background: var(--lilac);
+            border-block: 2px solid var(--cocoa)
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem
+        }
+
+        .card {
+            background: var(--milk);
+            border: 2px solid var(--cocoa);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: 5px 5px 0 var(--cocoa)
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: .5rem
+        }
+
+        .card ul {
+            margin: .75rem 0 1rem 1.1rem;
+            color: var(--cocoa-soft)
+        }
+
+        .price {
+            font-weight: 700
+        }
+
+        /* ============ 7. HERRAMIENTAS ============ */
+        .tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem
+        }
+
+        .tool {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .55rem 1.1rem;
+            border: 2px solid var(--cocoa);
+            border-radius: 999px;
+            background: var(--butter);
+            font-weight: 500;
+        }
+
+        .tool:nth-child(3n+2) {
+            background: var(--berry)
+        }
+
+        .tool:nth-child(3n) {
+            background: var(--matcha)
+        }
+
+        .gear {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem
+        }
+
+        .gear div {
+            background: var(--milk);
+            border: 2px dashed var(--cocoa);
+            border-radius: var(--radius);
+            padding: 1rem 1.25rem
+        }
+
+        /* ============ 8. MARCAS + PROCESO ============ */
+        .brands {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3.5rem
+        }
+
+        .brand {
+            border: 2px solid var(--cocoa);
+            border-radius: var(--radius);
+            padding: .9rem 1.5rem;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            background: #fff;
+        }
+
+        .steps {
+            list-style: none;
+            counter-reset: s;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem
+        }
+
+        .steps li {
+            counter-increment: s;
+            background: #fff;
+            border: 2px solid var(--cocoa);
+            border-radius: var(--radius);
+            padding: 1.25rem
+        }
+
+        .steps li::before {
+            content: counter(s);
+            display: grid;
+            place-items: center;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            background: var(--butter);
+            border: 2px solid var(--cocoa);
+            font-family: var(--font-display);
+            margin-bottom: .5rem;
+        }
+
+        /* ============ 9. CONTACTO ============ */
+        .contact {
+            text-align: center;
+            background: var(--berry);
+            border-top: 2px solid var(--cocoa);
+            padding-bottom: 3rem
+        }
+
+        .contact h2 {
+            font-size: clamp(2.2rem, 7vw, 4rem)
+        }
+
+        .contact .sub {
+            margin-inline: auto
+        }
+
+        .contact .btns {
+            justify-content: center
+        }
+
+        footer {
+            text-align: center;
+            font-size: .9rem;
+            margin-top: 2.5rem;
+            color: var(--cocoa)
+        }
+
+        /* ============ 10. RESPONSIVE ============ */
+        @media (max-width:760px) {
+
+            .hero-grid,
+            .about-grid {
+                grid-template-columns: 1fr
+            }
+
+            .hero-photo {
+                order: -1
+            }
+
+            .s1 {
+                left: 0
+            }
+
+            .s2 {
+                right: 0
+            }
+
+            section {
+                padding: 3.25rem 0
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            * {
+                transition: none !important;
+                scroll-behavior: auto !important
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav aria-label="Principal">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#trabajos">Trabajos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#herramientas">Herramientas</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header class="hero">
+        <div class="wrap hero-grid">
+            <div>
+                <h1>Hola, soy <span>Lucía</span></h1>
+                <p>¡Me encanta crear contenido en redes sociales! Creo contenido para redes sociales de marcas, hago
+                    videos UGC y también videos de lifestyle y cafeterías para mi
+                    propia comunidad.</p>
+                <div class="btns">
+                    <a class="btn" href="#trabajos">Ver mis trabajos</a>
+                    <a class="btn alt" href="#contacto">Trabajemos juntas</a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <div class="photo-frame">
+                    <img src="/img/lu.jpeg" alt="Lucía Fernandez">
+                </div>
+                <span class="sticker s1">creadora UGC</span>
+                <span class="sticker s2">contenido para marcas</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== SOBRE MÍ ===== -->
+    <section class="about" id="sobre-mi">
+        <div class="wrap about-grid">
+            <div>
+                <h2>Sobre mí</h2>
+                <p>Mi nombre es Lucía Fernandez, tengo 25 años y soy de Uruguay.</p>
+                <p>Desde Abril de 2026 trabajo en la creación de contenido para marcas en Instagram y Tiktok.</p>
+                <p>Desde hace más de 2 años disfruto crear contenido de lifestyle para mi propia comunidad en redes
+                    sociales.</p>
+            </div>
+            <ul class="facts">
+                <li><b>Herramientas</b>Lightroom y CapCut</li>
+                <li><b>Nichos</b>beauty, hogar, comida, bienestar</li>
+                <li><b>Redes</b>Instagram, Tiktok y Facebook</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===== TRABAJOS ===== -->
+    <section id="trabajos">
+        <div class="wrap">
+            <h2>Mis trabajos</h2>
+            <p class="sub">Una selección de videos UGC y de contenido propio. Reemplazá cada recuadro por tu video o
+                miniatura.</p>
+
+
+            <div class="work-grid">
+                <article class="work" data-t="ugc">
+                    <div class="thumb">
+                        <video src="/img/contenido1.mp4" controls playsinline preload="metadata"></video>
+                    </div>
+                </article>
+                <article class="work" data-t="ugc">
+                    <div class="thumb">
+                        <video src="/img/contenido4.mp4" controls playsinline preload="metadata"></video>
+                    </div>
+                </article>
+                <article class="work" data-t="propio">
+                    <div class="thumb">
+                        <video src="/img/contenido2.mp4" controls playsinline preload="metadata"></video>
+                    </div>
+                </article>
+                <article class="work" data-t="ugc">
+                    <div class="thumb">
+                        <video src="/img/contenido5.mp4" controls playsinline preload="metadata"></video>
+                    </div>
+                </article>
+                <article class="work" data-t="propio">
+                    <div class="thumb">
+                        <video src="/img/contenido3.mp4" controls playsinline preload="metadata"></video>
+                    </div>
+                </article>
+                <article class="work" data-t="propio">
+                    <div class="thumb">
+                        <video src="/img/contenido6.mp4" controls playsinline preload="metadata"></video>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICIOS ===== -->
+    <section class="services" id="servicios">
+        <div class="wrap">
+            <h2>Para marcas</h2>
+            <p class="sub">Paquetes pensados para que sepas qué recibís y cuándo. Todo se puede ajustar a tu campaña.
+            </p>
+            <div class="cards">
+                <div class="card">
+                    <h3>Video UGC</h3>
+                    <p>Un video listo para ads o redes.</p>
+                    <ul>
+                        <li>1 video de 15–30 s</li>
+                        <li>Edición con subtítulos</li>
+                        <li>1 ronda de cambios</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Pack mensual</h3>
+                    <p>Contenido constante para tu marca.</p>
+                    <ul>
+                        <li>4 videos al mes</li>
+                        <li>Variantes de gancho (hooks)</li>
+                        <li>Derechos de uso por 30 días</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Colaboración en mi perfil</h3>
+                    <p>Tu producto en mi comunidad.</p>
+                    <ul>
+                        <li>Reel o TikTok publicado</li>
+                        <li>Stories con enlace</li>
+                        <li>Reporte de resultados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HERRAMIENTAS ===== -->
+    <section id="herramientas">
+        <div class="wrap">
+            <h2>Herramientas</h2>
+            <p class="sub">Con lo que grabo, edito y organizo todo.</p>
+            <div class="tools">
+                <span class="tool">CapCut</span>
+                <span class="tool">Lightroom</span>
+                <span class="tool">Canva</span>
+                <span class="tool">Notion</span>
+            </div>
+            <div class="gear">
+                <div><b>Cámara</b><br>¿modelo de celu?</div>
+                <div><b>Luz</b><br>Ventana + luces adicionales</div>
+                <div><b>Audio</b><br>Micrófono de solapa</div>
+                <div><b>Extras</b><br>Trípode</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACTO ===== -->
+    <section class="contact" id="contacto">
+        <div class="wrap">
+            <h2>¿Hacemos algo lindo juntos?</h2>
+            <p class="sub">Escribime con tu idea o tu producto y te respondo en 48 horas.</p>
+            <div class="btns">
+                <a class="btn" href="mailto:hola@tunombre.com">hola@tunombre.com</a>
+                <a class="btn alt" href="https://wa.me/+59896230927">WhatsApp</a>
+            </div>
+            <footer>Web desarrollada por
+                <a href="https://tatianamazzeo.github.io/Nimbus-Studio//">@nimbusstudiouy</a>
+            </footer>
+        </div>
+    </section>
+</body>
+
+</html>
